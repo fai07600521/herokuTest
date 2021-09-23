@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+<!--
+	Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+	<head>
+		<title>Dimension</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static\assets\asset\css\main.css" />
+		<link rel= "stylesheet" href= "static/styles/loader.css">
+		<noscript><link rel="stylesheet" href="static\assets\asset\css\noscript.css" /></noscript>
+		  <script>
+        let globalStart = 0
+        const limit = 45
+        $('.ldld').show();
+        $('#bg').show();
+        $('#carousel_acf4').hide();
+        $(window).on("load", async () => {
+          await getImage()
+          $('#sec-d2d5').show();
+          hideLoading()
+        })
+
+        async function getImage(){
+          try {
+            const response = await fetch(`http://103.74.253.121:3000?type={{style}}&limit=${limit}&offset=${globalStart}`)
+            const datas = await response.json()
+            const imgContainer = $("#generated_image")
+            imgContainer.html(``)
+            for(data of datas){
+              const htmlString = `<div id="main" class="u-effect-fade u-effect-hover-zoom u-gallery-item">
+                  <div class="u-back-slide">
+                    <img class="u-back-image u-expanded" src="data:image/png;base64, ${data.file}">
+                  </div>
+                  <div class="u-over-slide u-shading u-over-slide-1">
+                    <h3 class="u-gallery-heading"></h3>
+                    <p class="u-gallery-text"></p>
+                  </div>
+                </div>`
+              imgContainer.append(htmlString)
+            }
+            globalStart = globalStart + limit
+          } catch(err) {
+            console.log(err.message)
+          }
+        }
+
+        async function Loadmore(){
+          //showLoading()
+          await getImage()
+         // hideLoading()
+        }
+
+        function showLoading() {
+          console.log("showLoding")
+          $("#loading").show()
+          $("#sec-d2d5").hide()
+          $("#carousel_acf4").hide()
+          $("#menuBar").hide()
+        }
+
+        function hideLoading() {
+          console.log("hideLoding")
+          setTimeout(() => {
+            $("#loading").hide()
+            $("#sec-d2d5").show()
+            $("#carousel_acf4").show()
+            $("#menuBar").show()
+          }, 500)
+        }
+   </script>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="logo">
+							<span class="icon fa-gem"></span>
+						</div>
+						<div class="content">
+							<div class="inner">
+								<h1>Dimension</h1>
+								<p>A fully designed your cloth styles by <a href="">AI</a>
+							</div>
+						</div>
+						<nav>
+							<ul>
+								<li><a href="#Classy">Classy</a></li>
+								<li><a href="#Sexy">Sexy</a></li>
+								<li><a href="#Minimal">Minimal</a></li>
+								<li><a href="#Street">Street</a></li>
+								<li><a href="#Feminine">Feminine</a></li>
+								<li><a href="#Musculine">Musculine</a></li>
+								<!--<li><a href="#elements">Elements</a></li>-->
+							</ul>
+						</nav>
+					</header>
+<div id="loading" style = "padding;60px">
+<center><br><br><br>
+<div class="loader" id="loader"></div>
+<div class="loader" id="loader2"></div>
+<div class="loader" id="loader3"></div>
+<div class="loader" id="loader4"></div>
+	<!--Delete the "loader3" and "loader4" divs for a 2-layer loader-->
+	<!--You can also change the animation durations or delays, that looks also pretty cool -->
+<span id="text">GENERATING...</span>
+<br>
+</div>
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Classy -->
+							<article id="Classy" style="border-radius:20px">
+								<h2 class="major">Classy</h2>
+								<span class="image main"><img src="static\assets\banner\1.png" alt="" /></span>
+								<p class="mb-5">สไตล์เรียบหรู สง่างาม เน้นของแบรนด์เนมที่มีแบบและสีในโทนเรียบง่าย เป็นสไตล์ที่คงทนและอยู่ได้นาน ไม่ล้าสมัยง่าย ๆ</p>
+								<form method ="post" action="/generated" href=indexx>
+								<button type="submit" name="classy" value="classy" class="btn btn-primary" data-dismiss="modal" onClick="myFunction()">
+						<!-- <i class="fas fa-times fa-fw"></i> -->
+								Generated Clothes
+							  </button>
+					      </form> 
+								</article>
+
+						<!-- Work -->
+							<article id="Sexy" style="border-radius:20px">
+								<h2 class="major">Sexy</h2>
+								<span class="image main"><img src="static\assets\banner\2.png" alt="" /></span>
+								<p class="mb-5">สไตส์เย้ายวน เปี่ยมเสน่ห์ ลุ่มลึกเปิดเผยรูปร่างและผิวพรรณที่น่ามองสำหรับสาวที่อยากโชว์เรือนร่างเซ็กซี่ให้เน้นโชว์จุดเด่นของคุณ สาวอกสวยอาจใส่เสื้อคอวีคว้านลึกเล็กน้อย</p>
+								<form method ="post" action="/generated" href=indexx>
+								<button type="submit" name="sexy" value="sexy" class="btn btn-primary" data-dismiss="modal" onClick="myFunction()">
+						<!-- <i class="fas fa-times fa-fw"></i> -->
+								Generated Clothes
+							 </button>
+					     </form> 
+							 </article>
+
+						<!-- About -->
+							<article id="Minimal" style="border-radius:20px">
+								<h2 class="major">Minimal</h2>
+								<span class="image main"><img src="static\assets\banner\3.png" alt="" /></span>
+								<p>แฟชั่นที่เน้นความธรรมดา เรียบง่าย มีความเป็นธรรมชาติ ไม่เยอะ ไม่ฟุ้ง แต่ต้องเนี้ยบและดูดี มีการคุมโทนสีที่อบอุ่นมิกแอนด์แมทช์ง่าย</p>
+								<form method ="post" action="/generated" href=indexx>
+								<button type="submit" name="minimal" value="minimal" class="btn btn-primary" data-dismiss="modal" onClick="myFunction()">
+						<!-- <i class="fas fa-times fa-fw"></i> -->
+								Generated Clothes
+							</button>
+						</form> 				
+								</article>
+						
+						<!-- About -->
+						<article id="Street" style="border-radius:20px">
+							<h2 class="major">Street</h2>
+							<span class="image main"><img src="static\assets\banner\4.png" alt="" /></span>
+							<p class="mb-5">สไตล์การแต่งตัวที่ง่ายๆ สบายๆ ที่หยิบไอเทมต่างๆมามิกซ์แอนด์แมทช์ให้สามารถใช้ได้ในชีวิตประจำวัน</p>
+
+						
+							<form method ="post" action="/generated" href=indexx>
+								<button type="submit" name="street" value="street" class="btn btn-primary" data-dismiss="modal" onClick="myFunction()">
+						<!-- <i class="fas fa-times fa-fw"></i> -->
+								Generated Clothes
+							</button>
+						</form> 
+						</article>
+
+						<!-- About -->
+						<article id="Feminine" style="border-radius:20px">
+							<h2 class="major">Feminine</h2>
+							<span class="image main"><img src="static\assets\banner\5.png" alt="" /></span>
+							<p class="mb-5">ลุคที่มีความเป็นผู้หญิง อ่อนหวาน บอบบาง น่าทะนุถนอม อาจมีลวดลายดอกไม้ เท็กซ์เจอร์เนื้อผ้าที่พลิ้วไหว โปร่งบาง สีสันดูละมุนตา หรือดีเทลโบ จับจีบ ระบาย พลีต</p>
+							<form method ="post" action="/generated" href=indexx>
+								<button type="submit" name="faminine" value="faminine" class="btn btn-primary" data-dismiss="modal" onClick="myFunction()">
+						<!-- <i class="fas fa-times fa-fw"></i> -->
+								Generated Clothes
+							</button>
+						</form> 
+						</article>
+
+
+						<!-- Contact -->
+						<article id="Musculine" style="border-radius:20px">
+							<h2 class="major">Musculine</h2>
+							<span class="image main"><img src="static\assets\banner\6.png" alt="" /></span>
+							<p class="mb-5">การแต่งตัวแบบทะมัดมะแมง คล่องแคล่ว เรียบเท่ ไม่ฟรุ้งฟริ้ง หวานๆ แหววๆ แต่มีรายละเอียดเล็กๆ น้อยๆ ที่ไม่มากเกินไป</p>
+							<form method ="post" action="/generated" href=indexx>
+								<button type="submit" name="masculine" value="masculine" class="btn btn-primary" data-dismiss="modal" onClick="myFunction()">
+						<!-- <i class="fas fa-times fa-fw"></i> -->
+								Generated Clothes
+							</button>
+						</form> 
+						</article>
+
+
+					</div>
+
+				<!-- Footer -->
+					<footer></footer>
+
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+		<!-- Scripts -->
+	
+			<script src="static\assets\asset\js\jquery.min.js"></script>
+			<script src="static\assets\asset\js\browser.min.js"></script>
+			<script src="static\assets\asset\js\breakpoints.min.js"></script>
+			<script src="static\assets\asset\js\util.js"></script>
+			<script src="static\assets\asset\js\main.js"></script>
+			<script>
+			$(document).ready(function(){
+				$("#loading").hide();
+			})
+
+			function myFunction() {
+				$("#loading").toggle()
+				$("#main").hide()
+			}
+			</script>
+
+	</body>
+</html>
