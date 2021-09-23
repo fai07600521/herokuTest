@@ -12,4 +12,4 @@ result = model.score(test_data, test_labels)
 print(result)
 #save the model 
 filename = 'iris_model.pkl'
-pickle.dump(result, open(filename, 'wb'))
+pickle.dump(model, open(filename, 'wb'))
