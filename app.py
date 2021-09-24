@@ -1,5 +1,5 @@
 import numpy as np
-from flask import Flask, request, jsonify, render_template
+import Flask, request, jsonify, render_template
 import pickle
 import os
  #app name
@@ -13,14 +13,7 @@ def home():
 
 @app.route('/predict]',methods=['POST]'])
 def predict(): 
-    labels = ['setosa', 'versicolor', 'virginica'] 
-    
-    features = [float(x)  for x in request.form.values()] 
-    
-    values = [np.array(features)] model = load_model() 
-    prediction = model.predict(values) 
-    result = labels[prediction[0]] 
-    return render_template('index.html', output=' The Flower is {}'.format(result)) 
+    return render_template('index.html') 
 if __name__ == "__main__": 
     port=int(os.environ.get('PORT',5000))    
     app.run(port=port,debug=True,use_reloader=False)
